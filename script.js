@@ -1,14 +1,17 @@
 
 class Pet {
-    constructor(name, sound, image) {
+    constructor(name, sound, image, soundUrl) {
         this.name = name;
         this.sound = sound;
         this.image = image;
+        this.soundUrl = new Audio(soundUrl);
         this.playCount = 0;
     }
 
     speak() {
         alert(this.sound);
+        this.soundUrl.currentTime = 0;
+        this.soundUrl.play();
     }
 
     play() {
@@ -17,8 +20,8 @@ class Pet {
         updateCounter(this.playCount);
         showFunActions(this.name);
     }
-}
 
+}
 let currentPet = null;
 
 function choosePet(type) {
@@ -26,25 +29,29 @@ function choosePet(type) {
         currentPet = new Pet(
             'Bunny',
             'cluck! cluck!🐇',
-            'https://i.pinimg.com/736x/e8/dc/90/e8dc90e39d2561a1ff4886b6a70c068b.jpg'
+            'https://i.pinimg.com/736x/e8/dc/90/e8dc90e39d2561a1ff4886b6a70c068b.jpg',
+            'media/rabbit-sounds-358172.mp3'
         );
     } else if (type === 'fish') {
         currentPet = new Pet(
             'Fish',
             'blurp!🐠',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfT9jm7A6yqi3kU9MhAGyBWgsLvMPCSf5L2Q&s'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfT9jm7A6yqi3kU9MhAGyBWgsLvMPCSf5L2Q&s',
+            'media/fish-jumping-splash-2-96871.mp3'
         );
     } else if (type === 'lion') {
         currentPet = new Pet(
             'Lion',
             'roar!🦁',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyvY3KsKfW7J5mcz3YblRajOYuDrxUcsGTfQ&s'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyvY3KsKfW7J5mcz3YblRajOYuDrxUcsGTfQ&s',
+            'media/lion-roar-ai-cinematic-371855 (1).mp3'
         );
     } else if (type === 'peacock') {
         currentPet = new Pet(
             'Peacock',
             'honks!🦚',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqAGDuaz3zlFn5m2rke_d9Y9LG5A1xp0y1Mw&s'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqAGDuaz3zlFn5m2rke_d9Y9LG5A1xp0y1Mw&s',
+            'media/nearby-peacock-call-220346.mp3'
         );
     }
 
